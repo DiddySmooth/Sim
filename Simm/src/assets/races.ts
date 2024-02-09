@@ -6,5 +6,9 @@ export let races = [
     {
         name: "Elf",
         ageLimit: 1000
+    },
+    {
+        name: "Drawf",
+        ageLimit: 400
     }
 ]
