@@ -9,9 +9,12 @@ import { races } from '../../../assets/races';
 export class PlayerInfoComponent implements OnInit{
   name = ""
   race = ""
+  age = 0
+  gender = ""
   ngOnInit(): void {
     this.generateName()
     this.generateRace()
+    this.generateAge()
   }
   generateName(){
     const randomNumber = Math.floor(Math.random() * names.length)
@@ -20,5 +23,14 @@ export class PlayerInfoComponent implements OnInit{
   generateRace(){
     const randomNumber = Math.floor(Math.random() * races.length)
     this.race = races[randomNumber].name
+  }
+  generateAge(){
+    let race = races.find(obj => obj.name === this.race);
+    if(race)
+      this.age = Math.floor(Math.random() * race.ageLimit)
+  }
+  generateGender(){
+    //const randomNumber = Math.floor(Math.random() * genders.length)
+    this.gender = "Male"
   }
 }
