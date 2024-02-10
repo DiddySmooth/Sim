@@ -10,5 +10,9 @@ export let races = [
     {
         name: "Drawf",
         ageLimit: 400
+    },
+    {
+        name: "Goblin",
+        ageLimit: 60
     }
 ]
