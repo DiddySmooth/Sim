@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { names } from '../../../assets/names';
 import { races } from '../../../assets/races';
 import { genders } from '../../../assets/genders';
+import { Subscription } from 'rxjs';
+import { PlayerService } from '../../player.service';
 @Component({
   selector: 'app-player-info',
   templateUrl: './player-info.component.html',
@@ -13,12 +15,19 @@ export class PlayerInfoComponent implements OnInit{
   age = 0
   gender = ""
 
+  constructor(private dataService: PlayerService) {
+    this.subscription = this.dataService.age$.subscribe(value => {
+      this.age = value;
+    });
+  }
   ngOnInit(): void {
     this.generateName()
     this.generateRace()
     this.generateAge()
     this.generateGender()
   }
+  
+  private subscription: Subscription;
 
   generateName(){
     const randomNumber = Math.floor(Math.random() * names.length)
@@ -34,6 +43,7 @@ export class PlayerInfoComponent implements OnInit{
     let race = races.find(obj => obj.name === this.race);
     if(race)
       this.age = Math.floor(Math.random() * race.ageLimit)
+    this.dataService.updateAge(this.age)
   }
 
   generateGender(){

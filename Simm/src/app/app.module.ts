@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { PlayerInfoComponent } from './Components/player-info/player-info.component';
+import { JobInfoComponent } from './Components/job-info/job-info.component';
+import { AgeUpAreaComponent } from './Components/age-up-area/age-up-area.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    PlayerInfoComponent
+    PlayerInfoComponent,
+    JobInfoComponent,
+    AgeUpAreaComponent
   ],
   imports: [
     BrowserModule,
