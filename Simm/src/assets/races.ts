@@ -1,4 +1,6 @@
-export let races = [
+import { IRace } from "../app/Interfaces/IRace";
+
+export let races: IRace[] = [
     {
         name: "Human",
         ageLimit: 110

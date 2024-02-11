@@ -1,0 +1,1 @@
+export type RaceName = "Human" | "Elf" | "Dwarf" | "Gnome" | "Tabaxi" | "Goblin";

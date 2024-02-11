@@ -7,6 +7,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { PlayerInfoComponent } from './Components/player-info/player-info.component';
 import { JobInfoComponent } from './Components/job-info/job-info.component';
 import { AgeUpAreaComponent } from './Components/age-up-area/age-up-area.component';
+import { CitizenListComponent } from './Components/citizen-list/citizen-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AgeUpAreaComponent } from './Components/age-up-area/age-up-area.compone
     DashboardComponent,
     PlayerInfoComponent,
     JobInfoComponent,
-    AgeUpAreaComponent
+    AgeUpAreaComponent,
+    CitizenListComponent
   ],
   imports: [
     BrowserModule,
