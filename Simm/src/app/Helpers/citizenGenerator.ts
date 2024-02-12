@@ -1,7 +1,8 @@
+import { genders } from "../../assets/genders";
 import { names } from "../../assets/names";
 import { races } from "../../assets/races";
 import { ICitizen } from "../Interfaces/ICitizen";
-import { IRace } from "../Interfaces/IRace";
+import { Gender } from "../Types/Gender";
 
 
 export function generateCitizen(): ICitizen{
@@ -14,7 +15,7 @@ export function generateCitizen(): ICitizen{
         age: age,
         gender: generateGender()
     }
-
+    return newCitizen
 }
 function generateRace(){
     const randomNumber = Math.floor(Math.random() * races.length)
@@ -31,5 +32,6 @@ function generateAge(race: string){
     else return 0
 }
 function generateGender(){
-    
+    const randomNumber = Math.floor(Math.random() * genders.length)
+    return genders[randomNumber] as Gender
 }
