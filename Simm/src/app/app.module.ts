@@ -7,6 +7,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { JobInfoComponent } from './Components/job-info/job-info.component';
 import { AgeUpAreaComponent } from './Components/age-up-area/age-up-area.component';
 import { CitizenListComponent } from './Components/citizen-list/citizen-list.component';
+import { MessageScreenComponent } from './Components/message-screen/message-screen.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CitizenListComponent } from './Components/citizen-list/citizen-list.com
     DashboardComponent,
     JobInfoComponent,
     AgeUpAreaComponent,
-    CitizenListComponent
+    CitizenListComponent,
+    MessageScreenComponent
   ],
   imports: [
     BrowserModule,

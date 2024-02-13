@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlayerService } from '../../player.service';
+import { PlayerService } from '../../Services/player.service';
 
 @Component({
   selector: 'app-age-up-area',
