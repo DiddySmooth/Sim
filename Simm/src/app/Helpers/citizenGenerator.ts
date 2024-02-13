@@ -23,10 +23,10 @@ function generateRace(){
 }
 function generateName(){
     const randomNumber = Math.floor(Math.random() * names.length)
-    return names[randomNumber].name
+    return names[randomNumber]
 }
 function generateAge(race: string){
-    let raceObj = races.find(obj => obj.name === race.);
+    let raceObj = races.find(obj => obj.name === race);
     if(raceObj)
         return Math.floor(Math.random() * raceObj.ageLimit)
     else return 0

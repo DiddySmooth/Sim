@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
-import { PlayerInfoComponent } from './Components/player-info/player-info.component';
 import { JobInfoComponent } from './Components/job-info/job-info.component';
 import { AgeUpAreaComponent } from './Components/age-up-area/age-up-area.component';
 import { CitizenListComponent } from './Components/citizen-list/citizen-list.component';
@@ -13,7 +12,6 @@ import { CitizenListComponent } from './Components/citizen-list/citizen-list.com
   declarations: [
     AppComponent,
     DashboardComponent,
-    PlayerInfoComponent,
     JobInfoComponent,
     AgeUpAreaComponent,
     CitizenListComponent

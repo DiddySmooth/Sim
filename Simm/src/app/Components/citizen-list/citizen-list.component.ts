@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
+import { ICitizen } from '../../Interfaces/ICitizen';
 
 @Component({
   selector: 'app-citizen-list',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './citizen-list.component.sass'
 })
 export class CitizenListComponent {
-  
+  @Input() citizens: ICitizen [] = []
+
+
+
 }
