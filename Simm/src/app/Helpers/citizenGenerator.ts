@@ -45,3 +45,6 @@ export function generateSexuality(){
         return "Straight" as Sexuality
     }
 }
+function generateJob(){
+    
+}

@@ -1,24 +1,103 @@
 export const mortalityRates: { [key: number]: number } = {
     0: 0.005,    // 0-1 years
     1: 0.001,    // 1-4 years
+    2: 0.001,    // interpolated rate
+    3: 0.001,    // interpolated rate
+    4: 0.001,    // interpolated rate
     5: 0.0005,   // 5-9 years
+    6: 0.0005,   // interpolated rate
+    7: 0.0005,   // interpolated rate
+    8: 0.0005,   // interpolated rate
+    9: 0.0005,   // interpolated rate
     10: 0.0004,  // 10-14 years
+    11: 0.00042, // interpolated rate
+    12: 0.00044, // interpolated rate
+    13: 0.00046, // interpolated rate
+    14: 0.00048, // interpolated rate
     15: 0.0005,  // 15-19 years
+    16: 0.0007,  // interpolated rate
+    17: 0.0009,  // interpolated rate
+    18: 0.0011,  // interpolated rate
+    19: 0.0013,  // interpolated rate
     20: 0.001,   // 20-24 years
+    21: 0.0014,  // interpolated rate
+    22: 0.0018,  // interpolated rate
+    23: 0.0022,  // interpolated rate
+    24: 0.0026,  // interpolated rate
     25: 0.002,   // 25-29 years
+    26: 0.0028,  // interpolated rate
+    27: 0.0036,  // interpolated rate
+    28: 0.0044,  // interpolated rate
+    29: 0.0052,  // interpolated rate
     30: 0.003,   // 30-34 years
+    31: 0.0036,  // interpolated rate
+    32: 0.0042,  // interpolated rate
+    33: 0.0048,  // interpolated rate
+    34: 0.0054,  // interpolated rate
     35: 0.004,   // 35-39 years
+    36: 0.0046,  // interpolated rate
+    37: 0.0052,  // interpolated rate
+    38: 0.0058,  // interpolated rate
+    39: 0.0064,  // interpolated rate
     40: 0.005,   // 40-44 years
+    41: 0.0058,  // interpolated rate
+    42: 0.0066,  // interpolated rate
+    43: 0.0074,  // interpolated rate
+    44: 0.0082,  // interpolated rate
     45: 0.007,   // 45-49 years
+    46: 0.0078,  // interpolated rate
+    47: 0.0086,  // interpolated rate
+    48: 0.0094,  // interpolated rate
+    49: 0.0102,  // interpolated rate
     50: 0.01,    // 50-54 years
+    51: 0.0115,  // interpolated rate
+    52: 0.013,   // interpolated rate
+    53: 0.0145,  // interpolated rate
+    54: 0.016,   // interpolated rate
     55: 0.015,   // 55-59 years
+    56: 0.0165,  // interpolated rate
+    57: 0.018,   // interpolated rate
+    58: 0.0195,  // interpolated rate
+    59: 0.021,   // interpolated rate
     60: 0.02,    // 60-64 years
+    61: 0.021,   // interpolated rate
+    62: 0.022,   // interpolated rate
+    63: 0.023,   // interpolated rate
+    64: 0.024,   // interpolated rate
     65: 0.03,    // 65-69 years
+    66: 0.032,   // interpolated rate
+    67: 0.034,   // interpolated rate
+    68: 0.036,   // interpolated rate
+    69: 0.038,   // interpolated rate
     70: 0.05,    // 70-74 years
+    71: 0.052,   // interpolated rate
+    72: 0.054,   // interpolated rate
+    73: 0.056,   // interpolated rate
+    74: 0.058,   // interpolated rate
     75: 0.08,    // 75-79 years
+    76: 0.082,   // interpolated rate
+    77: 0.084,   // interpolated rate
+    78: 0.086,   // interpolated rate
+    79: 0.088,   // interpolated rate
     80: 0.12,    // 80-84 years
+    81: 0.122,   // interpolated rate
+    82: 0.124,   // interpolated rate
+    83: 0.126,   // interpolated rate
+    84: 0.128,   // interpolated rate
     85: 0.18,    // 85-89 years
+    86: 0.182,   // interpolated rate
+    87: 0.184,   // interpolated rate
+    88: 0.186,   // interpolated rate
+    89: 0.188,   // interpolated rate
     90: 0.25,    // 90-94 years
+    91: 0.252,   // interpolated rate
+    92: 0.254,   // interpolated rate
+    93: 0.256,   // interpolated rate
+    94: 0.258,   // interpolated rate
     95: 0.35,    // 95-99 years
-    100: 0.5,    // 100+ years
-};
+    96: 0.352,   // interpolated rate
+    97: 0.354,   // interpolated rate
+    98: 0.356,   // interpolated rate
+    99: 0.358,
+    100: .5
+}
