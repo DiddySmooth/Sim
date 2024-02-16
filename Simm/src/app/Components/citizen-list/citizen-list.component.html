@@ -6,7 +6,7 @@
             <th>Gender</th>
             <th>Age</th>
         </tr>
-        <tr *ngFor="let cit of citizens">
+        <tr *ngFor="let cit of citizens" (click)="showCitizen(cit)">
             <td>{{cit.name}}</td>
             <td>{{cit.race.name}}</td>
             <td>{{cit.gender}}</td>

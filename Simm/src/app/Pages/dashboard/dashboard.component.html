@@ -1,4 +1,6 @@
-<app-job-info></app-job-info>
-<app-age-up-area></app-age-up-area>
-<app-citizen-list [citizens]="citizens"></app-citizen-list>
-<button (click)="ageCit()" >Next Year</button>
+<div class="dashboard">
+    <app-citizen-list [citizens]="citizens"></app-citizen-list>
+    <app-message-screen></app-message-screen>
+    <app-citizen-info-screen></app-citizen-info-screen>
+    <button (click)="ageCits()" >Next Year</button>
+</div>

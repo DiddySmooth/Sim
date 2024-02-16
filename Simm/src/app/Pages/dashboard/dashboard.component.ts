@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICitizen } from '../../Interfaces/ICitizen';
-import { generateCitizen } from '../../Helpers/citizenGenerator';
+import { generateCitizen, generateSexuality } from '../../Helpers/citizenGenerator';
+import { MessageService } from '../../Services/message.service';
+import { mortalityRates } from '../../../assets/mortalityRates';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,60 +11,66 @@ import { generateCitizen } from '../../Helpers/citizenGenerator';
 })
 export class DashboardComponent implements OnInit {
   citizens: ICitizen[] = [];
+
+  constructor(private messageService: MessageService){
+
+  }
+
   ngOnInit(): void {
-    this.generateCitizens(5);
+    this.generateCitizens(5, false);
   }
-  generateCitizens(num: number) {
+
+  generateCitizens(num: number, displayMessage: boolean) {
     for (let i = 0; i < num; i++) {
-      this.citizens.push(generateCitizen());
+      let cit = generateCitizen()
+      this.citizens.push(cit);
+      if(displayMessage){
+        this.messageService.updatedMessages(cit.name + " has join the town")
+      }
     }
-    console.log(this.citizens);
   }
+
   checkForDeath(cit: ICitizen) {
     let agePercent = (cit.age / cit.race.ageLimit) * 100
 
-    if(agePercent < 10){
-      if (Math.floor(Math.random() * 100) == 1){
-        this.removeCit(cit)
+    if (mortalityRates.hasOwnProperty(agePercent)) {
+      if (Math.random() < mortalityRates[agePercent]) {
+          this.removeCit(cit)
+          return true;  // Player died
+      } else {
+          return false;  // Player survived
       }
-    }
-    else if(agePercent > 10 && agePercent> 25){
-      if (Math.floor(Math.random() * 100) < 2){
-        this.removeCit(cit)
-      }
-    }
-    else if(agePercent > 26 && agePercent> 45){
-      if (Math.floor(Math.random() * 100) < 3){
-        this.removeCit(cit)
-      }
-    }
-    else if(agePercent > 46 && agePercent> 75){
-      if (Math.floor(Math.random() * 100) < 4){
-        this.removeCit(cit)
-      }
-    }
-    else if(agePercent > 76 && agePercent> 95){
-      if (Math.floor(Math.random() * 100) < 8){
-        this.removeCit(cit)
-      }
-    }
-    else if(agePercent > 96){
-      if (Math.floor(Math.random() * 100) < 90){
-        this.removeCit(cit)
-      }
-    }
-    
+  } else {
+      return false;  // Age not in mortality rates, assume player survives
+  }
   }
 
   removeCit(cit: ICitizen){
-    console.log(cit.name + ' Died at the age of ' + cit.age);
+    let message = cit.name + ' Died at the age of ' + cit.age;
+    this.messageService.updatedMessages(message)
     this.citizens = this.citizens.filter((e) =>  e !== cit)
   }
 
-  ageCit() {
+  ageCits() {
     for (let cit of this.citizens) {
       cit.age = cit.age + 1;
       this.checkForDeath(cit);
+      this.checkForSexuality(cit)
+    }
+    this.doesCitMoveIn()
+  }
+
+  doesCitMoveIn(){
+    let rand = Math.floor(Math.random() * 5)
+    if(rand == 4){
+      this.generateCitizens(1, true)
+    }
+  }
+
+  checkForSexuality(cit: ICitizen){
+    if(cit.age > cit.race.pubertyAge.min && cit.age < cit.race.pubertyAge.max && !cit.sexuality){
+      cit.sexuality = generateSexuality()
+      this.messageService.updatedMessages(cit.name + " Discovered they are " + cit.sexuality)
     }
   }
 }
