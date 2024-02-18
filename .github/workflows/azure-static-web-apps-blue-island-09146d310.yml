@@ -19,14 +19,11 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.13' 
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
+          node-version: '20.11.0' 
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_ISLAND_09146D310 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
