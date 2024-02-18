@@ -1,4 +1,5 @@
 import { genders } from "../../assets/genders";
+import { jobs } from "../../assets/jobs";
 import { names } from "../../assets/names";
 import { races } from "../../assets/races";
 import { ICitizen } from "../Interfaces/ICitizen";
@@ -17,6 +18,9 @@ export function generateCitizen(): ICitizen{
         name: generateName(),
         age: age,
         gender: generateGender()
+    }
+    if(newCitizen.age > newCitizen.race.pubertyAge.max){
+        newCitizen.job = generateJob()
     }
     return newCitizen
 }
@@ -45,6 +49,7 @@ export function generateSexuality(){
         return "Straight" as Sexuality
     }
 }
-function generateJob(){
-    
+export function generateJob(){
+    const rand = Math.floor(Math.random() * jobs.length)
+    return jobs[rand]
 }

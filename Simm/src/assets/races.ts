@@ -32,5 +32,13 @@ export let races: IRace[] = [
             min: 10,
             max: 12
         }
+    },
+    {
+        name: "Tabaxi",
+        ageLimit: 100,
+        pubertyAge: {
+            min: 10,
+            max: 15
+        }
     }
 ]

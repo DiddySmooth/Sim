@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICitizen } from '../../Interfaces/ICitizen';
-import { generateCitizen, generateSexuality } from '../../Helpers/citizenGenerator';
+import { generateCitizen, generateJob, generateSexuality } from '../../Helpers/citizenGenerator';
 import { MessageService } from '../../Services/message.service';
 import { mortalityRates } from '../../../assets/mortalityRates';
 
@@ -11,6 +11,7 @@ import { mortalityRates } from '../../../assets/mortalityRates';
 })
 export class DashboardComponent implements OnInit {
   citizens: ICitizen[] = [];
+  hasMayor: boolean = false
 
   constructor(private messageService: MessageService){
 
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit {
 
     if (mortalityRates.hasOwnProperty(agePercent)) {
       if (Math.random() < mortalityRates[agePercent]) {
+          if(cit.job?.name === "Mayor"){this.hasMayor = false}
           this.removeCit(cit)
           return true;  // Player died
       } else {
@@ -56,6 +58,10 @@ export class DashboardComponent implements OnInit {
       cit.age = cit.age + 1;
       this.checkForDeath(cit);
       this.checkForSexuality(cit)
+      this.checkForJob(cit)
+    }
+    if(!this.hasMayor){
+      this.appointMayor()
     }
     this.doesCitMoveIn()
   }
@@ -67,10 +73,26 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  checkForJob(cit: ICitizen){
+    if(cit.age == cit.race.pubertyAge.min){
+      cit.job = generateJob()
+      this.messageService.updatedMessages(cit.name+ "Has gotten a job as a " + cit.job.name)
+    }
+  }
+
   checkForSexuality(cit: ICitizen){
     if(cit.age > cit.race.pubertyAge.min && cit.age < cit.race.pubertyAge.max && !cit.sexuality){
       cit.sexuality = generateSexuality()
       this.messageService.updatedMessages(cit.name + " Discovered they are " + cit.sexuality)
     }
+  }
+
+  appointMayor(){
+    var rand = Math.floor(Math.random() * this.citizens.length)
+    this.citizens[rand].job = {
+      name: "Mayor"
+    }
+    this.messageService.updatedMessages(this.citizens[rand].name + " has been appointed Mayor")
+    this.hasMayor = true
   }
 }
