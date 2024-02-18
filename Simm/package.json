@@ -2,7 +2,7 @@
   "name": "simm",
   "version": "0.0.0",
   "engines": {
-    "npm": "18.13"
+    "npm": "18.13.0"
   },
   "scripts": {
     "ng": "ng",
