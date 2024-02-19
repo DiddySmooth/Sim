@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
 
   appointMayor(){
     var rand = Math.floor(Math.random() * this.citizens.length)
-    this.citizens[rand].job = {
+    this.citizens[rand].job2 = {
       name: "Mayor"
     }
     this.messageService.updatedMessages(this.citizens[rand].name + " has been appointed Mayor")

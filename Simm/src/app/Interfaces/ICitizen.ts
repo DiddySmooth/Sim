@@ -10,4 +10,12 @@ export interface ICitizen {
     race: IRace
     sexuality?: Sexuality
     job?: IJob
+    job2?: IJob
+    Dexterity: number
+    Strength: number
+    Constitution: number
+    Intelligence: number
+    Charisma: number
+    Wisdom: number
+
 }

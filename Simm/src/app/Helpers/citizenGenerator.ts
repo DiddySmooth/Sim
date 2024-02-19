@@ -17,7 +17,13 @@ export function generateCitizen(): ICitizen{
         race: race,
         name: generateName(),
         age: age,
-        gender: generateGender()
+        gender: generateGender(),
+        Strength: Math.floor(Math.random() * 11),
+        Constitution: Math.floor(Math.random() * 11),
+        Dexterity: Math.floor(Math.random() * 11),
+        Charisma: Math.floor(Math.random() * 11),
+        Intelligence: Math.floor(Math.random() * 11),
+        Wisdom: Math.floor(Math.random() * 11)
     }
     if(newCitizen.age > newCitizen.race.pubertyAge.max){
         newCitizen.job = generateJob()
