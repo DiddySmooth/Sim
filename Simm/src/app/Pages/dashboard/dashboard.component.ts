@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   generateCitizens(num: number, displayMessage: boolean) {
     for (let i = 0; i < num; i++) {
-      let cit = generateCitizen()
+      let cit = generateCitizen(this.citizens)
       this.citizens.push(cit);
       if(displayMessage){
         this.messageService.updatedMessages(cit.name + " has join the town")

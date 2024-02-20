@@ -9,10 +9,9 @@ import { Gender } from "../Types/Gender";
 import { Sexuality } from "../Types/Sexuality";
 
 
-export function generateCitizen(): ICitizen{
+export function generateCitizen(cits: ICitizen[]): ICitizen{
     var race = generateRace()
     var age = generateAge(race)
-
     var newCitizen: ICitizen = {
         race: race,
         name: generateName(),
@@ -27,7 +26,7 @@ export function generateCitizen(): ICitizen{
         Messages: []
     }
     if(newCitizen.age > newCitizen.race.pubertyAge.max){
-        newCitizen.job = generateJob()
+        newCitizen.job = generateJob(cits)
     }
     return newCitizen
 }
@@ -58,7 +57,10 @@ export function generateSexuality(){
 }
 export function generateJob(cits?: ICitizen[]){
     const rand = Math.floor(Math.random() * jobs.length)
-    if(cits && jobs[rand].populationRequirment < cits?.length){
+    if(cits?.length == 0){
+        return jobs[3]
+    }
+    else if(cits && jobs[rand].populationRequirment < cits?.length){
         return jobs[rand]
     }else{
         return generateJob(cits)
