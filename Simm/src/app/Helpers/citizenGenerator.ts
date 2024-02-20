@@ -56,7 +56,12 @@ export function generateSexuality(){
         return "Straight" as Sexuality
     }
 }
-export function generateJob(){
+export function generateJob(cits?: ICitizen[]){
     const rand = Math.floor(Math.random() * jobs.length)
-    return jobs[rand]
+    if(cits && jobs[rand].populationRequirment < cits?.length){
+        return jobs[rand]
+    }else{
+        return generateJob(cits)
+    }
 }
+

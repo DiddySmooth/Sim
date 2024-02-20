@@ -1,6 +1,6 @@
 <div class="dashboard">
-    <app-citizen-list [citizens]="citizens"></app-citizen-list>
-    <app-message-screen></app-message-screen>
+    <app-citizen-list class="citizenList" [citizens]="citizens"></app-citizen-list>
+    <app-message-screen class="messageBox"></app-message-screen>
     <app-citizen-info-screen></app-citizen-info-screen>
-    <button (click)="ageCits()" >Next Year</button>
+    <button class="ageButton" (click)="ageCits()" >Next Year</button>
 </div>

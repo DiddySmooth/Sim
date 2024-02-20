@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
       cit.age = cit.age + 1;
       this.checkForDeath(cit);
       this.checkForSexuality(cit)
-      this.checkForJob(cit)
+      this.checkForJob(cit, this.citizens)
     }
     if(!this.hasMayor){
       this.appointMayor()
@@ -73,9 +73,9 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  checkForJob(cit: ICitizen){
+  checkForJob(cit: ICitizen, cits: ICitizen[]){
     if(cit.age == cit.race.pubertyAge.min){
-      cit.job = generateJob()
+      cit.job = generateJob(cits)
       this.messageService.updatedMessages(cit.name+ "Has gotten a job as a " + cit.job.name)
     }
   }
@@ -92,7 +92,8 @@ export class DashboardComponent implements OnInit {
     this.citizens[rand].job2 = {
       name: "Mayor",
       primarySkill: "Charisma",
-      secondarySkill: "Intelligence"
+      secondarySkill: "Intelligence",
+      populationRequirment: 0
     }
     this.messageService.updatedMessages(this.citizens[rand].name + " has been appointed Mayor")
     this.hasMayor = true
