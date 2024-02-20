@@ -1,0 +1,6 @@
+export type Skill = "Strength" 
+    | "Dexterity" 
+    | "Constitution" 
+    | "Charisma" 
+    | "Wisdom" 
+    | "Intelligence"

@@ -12,9 +12,5 @@ export class PlayerService {
   updateAge(age: any) {
     this.ageSubject.next(age);
   }
-
-  ageUp(){
-    console.log()
-  }
   constructor() { }
 }

@@ -17,5 +17,6 @@ export interface ICitizen {
     Intelligence: number
     Charisma: number
     Wisdom: number
+    Messages?: string[]
 
 }

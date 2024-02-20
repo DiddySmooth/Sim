@@ -2,24 +2,38 @@ import { IJob } from "../app/Interfaces/IJob";
 
 export let jobs: IJob[] = [
     {
-        name: "Miner"
+        name: "Miner",
+        primarySkill: "Strength",
+        secondarySkill: "Constitution"
     },
     {
-        name: "Logger"
+        name: "Logger",
+        primarySkill: "Strength",
+        secondarySkill: "Constitution"
     },
     {
-        name: "Cobbler"
+        name: "Cobbler",
+        primarySkill: "Dexterity",
+        secondarySkill: "Intelligence"
     },
     {
-        name: "Farmer"
+        name: "Farmer",
+        primarySkill: "Constitution",
+        secondarySkill: "Strength"
     },
     {
-        name: "Blacksmith"
+        name: "Blacksmith",
+        primarySkill: "Dexterity",
+        secondarySkill: "Strength"
     },
     {
-        name: "Carpenter"
+        name: "Carpenter",
+        primarySkill: "Dexterity",
+        secondarySkill: "Intelligence"
     },
     {
-        name: "Weaver"
+        name: "Weaver",
+        primarySkill: "Dexterity",
+        secondarySkill: "Intelligence"
     }
 ]

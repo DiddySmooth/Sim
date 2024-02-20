@@ -83,14 +83,16 @@ export class DashboardComponent implements OnInit {
   checkForSexuality(cit: ICitizen){
     if(cit.age > cit.race.pubertyAge.min && cit.age < cit.race.pubertyAge.max && !cit.sexuality){
       cit.sexuality = generateSexuality()
-      this.messageService.updatedMessages(cit.name + " Discovered they are " + cit.sexuality)
+      cit.Messages?.push(cit.name + " Discovered they are " + cit.sexuality)
     }
   }
 
   appointMayor(){
     var rand = Math.floor(Math.random() * this.citizens.length)
     this.citizens[rand].job2 = {
-      name: "Mayor"
+      name: "Mayor",
+      primarySkill: "Charisma",
+      secondarySkill: "Intelligence"
     }
     this.messageService.updatedMessages(this.citizens[rand].name + " has been appointed Mayor")
     this.hasMayor = true

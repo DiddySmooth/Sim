@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="citizen" class="container">
     <p>{{citizen.name}}</p>
     <p *ngIf="citizen.job">{{citizen.job.name}}</p>
     <p *ngIf="citizen.job2">{{citizen.job2.name}}</p>
@@ -8,4 +8,6 @@
     <p>Charisma: {{citizen.Charisma}}</p>
     <p>Intelligence: {{citizen.Intelligence}}</p>
     <p>Wisdom: {{citizen.Wisdom}}</p>
+    <h1>Messages</h1>
+    <p *ngFor="let message of citizen.Messages">{{message}}</p>
 </div>

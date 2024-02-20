@@ -23,7 +23,8 @@ export function generateCitizen(): ICitizen{
         Dexterity: Math.floor(Math.random() * 11),
         Charisma: Math.floor(Math.random() * 11),
         Intelligence: Math.floor(Math.random() * 11),
-        Wisdom: Math.floor(Math.random() * 11)
+        Wisdom: Math.floor(Math.random() * 11),
+        Messages: []
     }
     if(newCitizen.age > newCitizen.race.pubertyAge.max){
         newCitizen.job = generateJob()
