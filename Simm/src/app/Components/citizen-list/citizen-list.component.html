@@ -5,12 +5,14 @@
             <th>Race</th>
             <th>Gender</th>
             <th>Age</th>
+            <th>Job</th>
         </tr>
         <tr *ngFor="let cit of citizens" (click)="showCitizen(cit)">
             <td>{{cit.name}}</td>
             <td>{{cit.race.name}}</td>
             <td>{{cit.gender}}</td>
             <td>{{cit.age}}</td>
+            <td>{{cit.job?.name}}</td>
         </tr>
     </table>
 </div>
