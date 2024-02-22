@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICitizen } from '../../Interfaces/ICitizen';
-import { generateCitizen, generateJob, generateSexuality } from '../../Helpers/citizenGenerator';
+import { checkIfOpenToRelationship, generateCitizen, generateJob, generateSexuality } from '../../Helpers/citizenGenerator';
 import { MessageService } from '../../Services/message.service';
 import { mortalityRates } from '../../../assets/mortalityRates';
 
@@ -59,10 +59,12 @@ export class DashboardComponent implements OnInit {
       this.checkForDeath(cit);
       this.checkForSexuality(cit)
       this.checkForJob(cit, this.citizens)
+      checkIfOpenToRelationship(cit)
     }
     if(!this.hasMayor){
       this.appointMayor()
     }
+    this.checkForRelationships()
     this.doesCitMoveIn()
   }
 
@@ -97,5 +99,23 @@ export class DashboardComponent implements OnInit {
     }
     this.messageService.updatedMessages(this.citizens[rand].name + " has been appointed Mayor")
     this.hasMayor = true
+  }
+
+  checkForRelationships(){
+    for(let cit of this.citizens){
+      for(let cit2 of this.citizens){
+        if(cit.openToRelationship && cit2.openToRelationship && cit !== cit2){
+          if(Math.floor(Math.random() * 4) == 3){
+            cit.relationshipStatus = true
+            cit.openToRelationship = false
+            cit.significantOther = cit2
+            cit2.relationshipStatus = true
+            cit2.openToRelationship = false
+            cit2.significantOther = cit
+            this.messageService.updatedMessages(cit.name + " and " + cit2.name + " are now daiting.")
+          }
+        }
+      }
+    }
   }
 }

@@ -9,7 +9,7 @@ import { Gender } from "../Types/Gender";
 import { Sexuality } from "../Types/Sexuality";
 
 
-export function generateCitizen(cits: ICitizen[]): ICitizen{
+export function generateCitizen(cits: ICitizen[]): ICitizen {
     var race = generateRace()
     var age = generateAge(race)
     var newCitizen: ICitizen = {
@@ -23,47 +23,54 @@ export function generateCitizen(cits: ICitizen[]): ICitizen{
         Charisma: Math.floor(Math.random() * 11),
         Intelligence: Math.floor(Math.random() * 11),
         Wisdom: Math.floor(Math.random() * 11),
-        Messages: []
+        Messages: [],
+        relationshipStatus: false,
+        openToRelationship: false
     }
-    if(newCitizen.age > newCitizen.race.pubertyAge.max){
+    if (newCitizen.age > newCitizen.race.pubertyAge.max) {
         newCitizen.job = generateJob(cits)
     }
     return newCitizen
 }
-function generateRace(){
+function generateRace() {
     const randomNumber = Math.floor(Math.random() * races.length)
     return races[randomNumber]
 }
-function generateName(){
+function generateName() {
     const randomNumber = Math.floor(Math.random() * names.length)
     return names[randomNumber]
 }
-function generateAge(race: IRace){    
+function generateAge(race: IRace) {
     return Math.floor(Math.random() * race.ageLimit)
 }
-function generateGender(){
+function generateGender() {
     const randomNumber = Math.floor(Math.random() * genders.length)
     return genders[randomNumber] as Gender
 }
-export function generateSexuality(){
+export function generateSexuality() {
     const randomNumber = Math.floor(Math.random() * 3)
-    if(randomNumber == 1){
+    if (randomNumber == 1) {
         return "Gay" as Sexuality
-    }else if(randomNumber == 2){
+    } else if (randomNumber == 2) {
         return "Bisexual" as Sexuality
-    }else{
+    } else {
         return "Straight" as Sexuality
     }
 }
-export function generateJob(cits?: ICitizen[]){
+export function generateJob(cits?: ICitizen[]) {
     const rand = Math.floor(Math.random() * jobs.length)
-    if(cits?.length == 0){
+    if (cits?.length == 0) {
         return jobs[3]
     }
-    else if(cits && jobs[rand].populationRequirment < cits?.length){
+    else if (cits && jobs[rand].populationRequirment < cits?.length) {
         return jobs[rand]
-    }else{
+    } else {
         return generateJob(cits)
     }
 }
 
+export function checkIfOpenToRelationship(cit: ICitizen) {
+    if (cit.relationshipStatus == false) {
+        cit.openToRelationship = true
+    }
+}

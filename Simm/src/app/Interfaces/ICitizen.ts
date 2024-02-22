@@ -18,5 +18,8 @@ export interface ICitizen {
     Charisma: number
     Wisdom: number
     Messages?: string[]
+    relationshipStatus: boolean
+    openToRelationship: boolean
+    significantOther?: ICitizen
 
 }
