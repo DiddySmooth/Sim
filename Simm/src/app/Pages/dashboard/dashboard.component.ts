@@ -37,6 +37,11 @@ export class DashboardComponent implements OnInit {
     if (mortalityRates.hasOwnProperty(agePercent)) {
       if (Math.random() < mortalityRates[agePercent]) {
           if(cit.job?.name === "Mayor"){this.hasMayor = false}
+          if(cit.relationshipStatus === true && cit.significantOther){
+            cit.significantOther.relationshipStatus = false
+            cit.significantOther.openToRelationship = true
+            cit.significantOther.significantOther = undefined
+          }
           this.removeCit(cit)
           return true;  // Player died
       } else {
@@ -104,7 +109,7 @@ export class DashboardComponent implements OnInit {
   checkForRelationships(){
     for(let cit of this.citizens){
       for(let cit2 of this.citizens){
-        if(cit.openToRelationship && cit2.openToRelationship && cit !== cit2){
+        if(cit.openToRelationship && cit2.openToRelationship && cit !== cit2 && cit.race === cit2.race){
           if(Math.floor(Math.random() * 4) == 3){
             cit.relationshipStatus = true
             cit.openToRelationship = false
@@ -117,5 +122,8 @@ export class DashboardComponent implements OnInit {
         }
       }
     }
+  }
+  checkForKids(){
+    
   }
 }

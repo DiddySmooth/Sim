@@ -1,14 +1,43 @@
-<div *ngIf="citizen" class="container">
-    <p>{{citizen.name}}</p>
-    <p *ngIf="citizen.job">{{citizen.job.name}}</p>
+<div *ngIf="citizen" class="container citizenInfoContainer">
     <p *ngIf="citizen.job2">{{citizen.job2.name}}</p>
-    <p>Strength: {{citizen.Strength}}</p>
-    <p>Dexterity: {{citizen.Dexterity}}</p>
-    <p>Constitution: {{citizen.Constitution}}</p>
-    <p>Charisma: {{citizen.Charisma}}</p>
-    <p>Intelligence: {{citizen.Intelligence}}</p>
-    <p>Wisdom: {{citizen.Wisdom}}</p>
-    <p>{{citizen.openToRelationship}}</p>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>{{citizen.name}}</td>
+        </tr>
+        <tr>
+            <td>Job</td>
+            <td>{{citizen.job?.name}}</td>
+        </tr>
+        <tr>
+            <td>Strength</td>
+            <td>{{citizen.Strength}}</td>
+        </tr>
+        <tr>
+            <td>Dexterity</td>
+            <td>{{citizen.Dexterity}}</td>
+        </tr>
+        <tr>
+            <td>Constitution</td>
+            <td>{{citizen.Constitution}}</td>
+        </tr>
+        <tr>
+            <td>Charisma</td>
+            <td>{{citizen.Charisma}}</td>
+        </tr>
+        <tr>
+            <td>Intelligence</td>
+            <td>{{citizen.Intelligence}}</td>
+        </tr>
+        <tr>
+            <td>Wisdom</td>
+            <td>{{citizen.Wisdom}}</td>
+        </tr>
+        <tr>
+            <td>Partner</td>
+            <td>{{citizen.significantOther?.name}}</td>
+        </tr>
+    </table>
     <h1>Messages</h1>
     <p *ngFor="let message of citizen.Messages">{{message}}</p>
 </div>
