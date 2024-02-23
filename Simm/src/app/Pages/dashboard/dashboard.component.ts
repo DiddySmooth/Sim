@@ -124,6 +124,12 @@ export class DashboardComponent implements OnInit {
     }
   }
   checkForKids(){
-    
+    for(let cit of this.citizens){
+      if(cit.relationshipStatus == true){
+        if(Math.floor(Math.random() * 4) == 3){
+          
+        }
+      }
+    }
   }
 }
