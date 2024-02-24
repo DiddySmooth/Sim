@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
   checkForRelationships(){
     for(let cit of this.citizens){
       for(let cit2 of this.citizens){
-        if(cit.openToRelationship && cit2.openToRelationship && cit !== cit2 && cit.race === cit2.race && cit.age >= cit.race.pubertyAge.min && cit2.age >= cit2.race.pubertyAge.min){
+        if(this.checkIfRelationshipAppropriate(cit, cit2)){
           if(Math.floor(Math.random() * 4) == 3){
             cit.relationshipStatus = true
             cit.openToRelationship = false
@@ -144,6 +144,17 @@ export class DashboardComponent implements OnInit {
   checkIfRelationshipAppropriate(cit1: ICitizen, cit2: ICitizen){
     if(cit1.age < cit1.race.pubertyAge.min || cit2.age < cit1.race.pubertyAge.min){
       return false
+    }
+    if(!cit1.openToRelationship || !cit2.openToRelationship){
+      return false
+    }
+    if(cit1.race !== cit2.race){
+      return false
+    }
+    if(cit1.age < cit1.race.pubertyAge.max + 3 || cit2.age < cit2.race.pubertyAge.max){
+      if(Math.abs(cit1.age - cit2.age ) > 3){
+        return false
+      }
     }
     return true
   }
