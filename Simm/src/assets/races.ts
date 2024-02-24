@@ -7,7 +7,7 @@ export let races: IRace[] = [
         pubertyAge: {
             min: 10,
             max: 12
-        }
+        },
     },
     {
         name: "Elf",

@@ -25,7 +25,8 @@ export function generateCitizen(cits: ICitizen[]): ICitizen {
         Wisdom: Math.floor(Math.random() * 11),
         Messages: [],
         relationshipStatus: false,
-        openToRelationship: false
+        openToRelationship: false,
+        recentlyHadChild: false
     }
     if (newCitizen.age > newCitizen.race.pubertyAge.max) {
         newCitizen.job = generateJob(cits)

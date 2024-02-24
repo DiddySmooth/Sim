@@ -65,6 +65,7 @@ export class DashboardComponent implements OnInit {
       this.checkForSexuality(cit)
       this.checkForJob(cit, this.citizens)
       checkIfOpenToRelationship(cit)
+      this.checkForKids()
     }
     if(!this.hasMayor){
       this.appointMayor()
@@ -109,7 +110,7 @@ export class DashboardComponent implements OnInit {
   checkForRelationships(){
     for(let cit of this.citizens){
       for(let cit2 of this.citizens){
-        if(cit.openToRelationship && cit2.openToRelationship && cit !== cit2 && cit.race === cit2.race){
+        if(cit.openToRelationship && cit2.openToRelationship && cit !== cit2 && cit.race === cit2.race && cit.age >= cit.race.pubertyAge.min && cit2.age >= cit2.race.pubertyAge.min){
           if(Math.floor(Math.random() * 4) == 3){
             cit.relationshipStatus = true
             cit.openToRelationship = false
@@ -125,9 +126,17 @@ export class DashboardComponent implements OnInit {
   }
   checkForKids(){
     for(let cit of this.citizens){
-      if(cit.relationshipStatus == true){
+      if(cit.relationshipStatus == true && cit.recentlyHadChild == false){
         if(Math.floor(Math.random() * 4) == 3){
-          
+          cit.recentlyHadChild = true
+          if(cit.significantOther){
+            cit.significantOther.recentlyHadChild = true
+          }
+          let newCit = generateCitizen(this.citizens)
+          newCit.age = 0
+          newCit.parent = cit
+          this.citizens.push(newCit)
+          this.messageService.updatedMessages(cit.name + " and " + cit.significantOther?.name + " had a baby named " + newCit.name)
         }
       }
     }

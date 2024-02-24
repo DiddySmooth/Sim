@@ -21,5 +21,6 @@ export interface ICitizen {
     relationshipStatus: boolean
     openToRelationship: boolean
     significantOther?: ICitizen
-
+    parent?: ICitizen
+    recentlyHadChild: boolean
 }
