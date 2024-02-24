@@ -141,4 +141,10 @@ export class DashboardComponent implements OnInit {
       }
     }
   }
+  checkIfRelationshipAppropriate(cit1: ICitizen, cit2: ICitizen){
+    if(cit1.age < cit1.race.pubertyAge.min || cit2.age < cit1.race.pubertyAge.min){
+      return false
+    }
+    return true
+  }
 }

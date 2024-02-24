@@ -9,6 +9,7 @@ export interface ICitizen {
     gender: Gender
     race: IRace
     sexuality?: Sexuality
+    knowsSexuality: boolean
     job?: IJob
     job2?: IJob
     Dexterity: number

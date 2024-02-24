@@ -26,7 +26,8 @@ export function generateCitizen(cits: ICitizen[]): ICitizen {
         Messages: [],
         relationshipStatus: false,
         openToRelationship: false,
-        recentlyHadChild: false
+        recentlyHadChild: false,
+        knowsSexuality: false
     }
     if (newCitizen.age > newCitizen.race.pubertyAge.max) {
         newCitizen.job = generateJob(cits)
