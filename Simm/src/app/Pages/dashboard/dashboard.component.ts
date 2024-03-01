@@ -34,12 +34,5 @@ export class DashboardComponent implements OnInit {
     });
     this.citizenListService.generateCitizens(5, false)
   }
-
- 
-
-  
-
-  
-
   
 }

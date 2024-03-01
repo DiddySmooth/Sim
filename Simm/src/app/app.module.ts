@@ -7,6 +7,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { CitizenListComponent } from './Components/citizen-list/citizen-list.component';
 import { MessageScreenComponent } from './Components/message-screen/message-screen.component';
 import { CitizenInfoScreenComponent } from './Components/citizen-info-screen/citizen-info-screen.component';
+import { DisplayScreenComponent } from './Components/display-screen/display-screen.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CitizenInfoScreenComponent } from './Components/citizen-info-screen/cit
     DashboardComponent,
     CitizenListComponent,
     MessageScreenComponent,
-    CitizenInfoScreenComponent
+    CitizenInfoScreenComponent,
+    DisplayScreenComponent
   ],
   imports: [
     BrowserModule,

@@ -79,6 +79,15 @@ export class CitizenListService {
     this.checkForRelationships()
     this.doesCitMoveIn()
   }
+  ageCitsDaily(){
+    for (let cit of this.getCitizens()){
+      
+    }
+  }
+
+
+
+
   doesCitMoveIn(){
     let rand = Math.floor(Math.random() * 5)
     if(rand == 4){
