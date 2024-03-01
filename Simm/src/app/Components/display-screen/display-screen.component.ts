@@ -29,35 +29,44 @@ export class DisplayScreenComponent implements OnInit {
     const container =
       this.elementRef.nativeElement.querySelector('#canvas-container');
     this.canW = container.offsetWidth;
-    this.canH = container.offsetWidth;
+    this.canH = container.offsetHeight;
     canvas.width = container.offsetWidth;
     canvas.height = container.offsetHeight;
   }
   generateCitSprites() {
     for (let cit of this.citizens) {
       let sprite = Sprite({
-        x: Math.floor(Math.random() * this.canH),
-        y: Math.floor(Math.random() * this.canW),
+        x: Math.floor(Math.random() * (this.canW)),
+        y: Math.floor(Math.random() * (this.canH)),
         width: 4,
         height: 4,
         color: 'red',
       });
       this.cits.push(sprite);
+      console.log(sprite.x, sprite.y)
     }
   }
   ngOnInit(): void {
     this.resizeCanvas();
-    const canvas = this.canvasRef.nativeElement;
+    
 
     this.citizenListService.citizens.subscribe((citizens: ICitizen[]) => {
       this.citizens = citizens;
     });
 
-    init(canvas);
+    
     initKeys();
     this.generateCitSprites();
 
-    // Define game loop
+    this.gameLoop()
+    
+  }
+  citMovement(){
+
+  }
+  gameLoop(){
+    const canvas = this.canvasRef.nativeElement;
+    init(canvas);
     const loop = GameLoop({
       update: () => {},
       render: () => {
@@ -68,12 +77,7 @@ export class DisplayScreenComponent implements OnInit {
         }
       },
     });
-
-    // Start the game loop
     loop.start();
-  }
-  citMovement(){
-
   }
 }
 
