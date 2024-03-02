@@ -11,6 +11,8 @@ export class DisplayScreenComponent implements OnInit {
   @ViewChild('gameCanvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
   citizens: ICitizen[] = [];
+  addedCitizens: ICitizen[] = []
+  removedCitizens: ICitizen[] = []
   cits: any = [];
   canH: number = 0;
   canW: number = 0;
@@ -33,7 +35,7 @@ export class DisplayScreenComponent implements OnInit {
     canvas.width = container.offsetWidth;
     canvas.height = container.offsetHeight;
   }
-  generateCitSprites() {
+  initCitSprites() {
     for (let cit of this.citizens) {
       let sprite = Sprite({
         x: Math.floor(Math.random() * (this.canW)),
@@ -43,7 +45,24 @@ export class DisplayScreenComponent implements OnInit {
         color: 'red',
       });
       this.cits.push(sprite);
-      console.log(sprite.x, sprite.y)
+    }
+  }
+  generateCitSprites(cits: ICitizen[]){
+    for (let cit of cits){
+      let sprite = Sprite({
+        x: Math.floor(Math.random() * (this.canW)),
+        y: Math.floor(Math.random() * (this.canH)),
+        width: 4,
+        height: 4,
+        color: 'red',
+        cit: cit
+      });
+      this.cits.push(sprite)
+    }
+  }
+  removeCits(cits: ICitizen[]){
+    for( let cit of cits){
+        
     }
   }
   ngOnInit(): void {
@@ -51,12 +70,19 @@ export class DisplayScreenComponent implements OnInit {
     
 
     this.citizenListService.citizens.subscribe((citizens: ICitizen[]) => {
+      if(this.citizens.length > 0){
+        this.addedCitizens = []
+        this.removedCitizens = []
+        this.addedCitizens = citizens.filter(item => !this.citizens.includes(item));
+        this.removedCitizens = this.citizens.filter(item => !citizens.includes(item));
+        this.generateCitSprites(this.addedCitizens)
+      }
       this.citizens = citizens;
     });
 
     
     initKeys();
-    this.generateCitSprites();
+    this.initCitSprites();
 
     this.gameLoop()
     
@@ -65,10 +91,13 @@ export class DisplayScreenComponent implements OnInit {
 
   }
   gameLoop(){
+    
     const canvas = this.canvasRef.nativeElement;
     init(canvas);
     const loop = GameLoop({
-      update: () => {},
+      
+      update: () => {
+      },
       render: () => {
         const context = canvas.getContext('2d')!;
         context.clearRect(0, 0, canvas.width, canvas.height);
