@@ -43,6 +43,7 @@ export class DisplayScreenComponent implements OnInit {
         width: 4,
         height: 4,
         color: 'red',
+        cit: cit
       });
       this.cits.push(sprite);
     }
@@ -60,10 +61,9 @@ export class DisplayScreenComponent implements OnInit {
       this.cits.push(sprite)
     }
   }
-  removeCits(cits: ICitizen[]){
-    for( let cit of cits){
-        
-    }
+  removeCits(removedCits: ICitizen[]){
+    //this.cits = this.cits.filter(cit => cit)
+    this.cits = this.cits.filter((cit: { cit: any; }) => !removedCits.some(cit2 => cit2 === cit.cit))
   }
   ngOnInit(): void {
     this.resizeCanvas();
@@ -76,6 +76,7 @@ export class DisplayScreenComponent implements OnInit {
         this.addedCitizens = citizens.filter(item => !this.citizens.includes(item));
         this.removedCitizens = this.citizens.filter(item => !citizens.includes(item));
         this.generateCitSprites(this.addedCitizens)
+        this.removeCits(this.removedCitizens)
       }
       this.citizens = citizens;
     });
